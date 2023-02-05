@@ -52,7 +52,7 @@ if (getCookie("auth.token.3058.in")){
     fetch(loginEndpoint, options) //  Promise
     .then(response=>{
         console.log(response)
-        return response
+        return response.json();
     })
     .then(authData =>{
         handleAuthData(authData);
@@ -62,17 +62,30 @@ if (getCookie("auth.token.3058.in")){
     })
 }
 else{
-  oautInterface();
+  oauthInterface();
 }
 
 // OneAuth Page Interface
-function oautInterface(){
+function oauthInterface(){
   head.innerHTML = '<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dev3058/OneAuthCdnData@master/model-auth-style.css">';
   body.innerHTML = '<div class="container"> <div class="cookiesContent" id="cookiesPopup"> <button class="close">✖</button> <img src="https://cdn-icons-png.flaticon.com/512/4009/4009133.png" alt="security-guard" /> <p>For security reasons, we need authentication access from you.</p> <button class="accept" onclick=window.location.href=`https://3058.in/oneauth?q=${window.location.href}`>Continue with OneAuth</button> </div> </div>';
 }
+
+function generateOneAuthUserData(authJsonData){
+  console.log(authJsonData)
+  const user_name = document.getElementById("OneAuthUserName");
+  const first_name = document.getElementById("OneAuthFirstName");
+  const last_name = document.getElementById("OneAuthLastName");
+  user_name.innerText = authJsonData.username;
+  first_name.innerText = authJsonData.first_name;
+  last_name.innerText = authJsonData.last_name;
+}
+
+
 function handleAuthData(authData, callback){
-  if(authData.status != 200){
-    oautInterface(); 
+  if(authData.authentication != 'true'){
+    oauthInterface(); 
   }
+  generateOneAuthUserData(authData);
   callback();
 }
