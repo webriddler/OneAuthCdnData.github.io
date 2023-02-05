@@ -67,7 +67,7 @@ else{
 
 // OneAuth Page Interface
 function oauthInterface(){
-  head.innerHTML = '<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dev3058/OneAuthCdnData@master/model-auth-style.css">';
+  head.innerHTML = '<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dev3058/OneAuthCdnData@1cababa703339a9a9f460487372dabcfd3b7a01a/dist/model-auth-style.css">';
   body.innerHTML = '<div class="container"> <div class="cookiesContent" id="cookiesPopup"> <button class="close">✖</button> <img src="https://cdn-icons-png.flaticon.com/512/4009/4009133.png" alt="security-guard" /> <p>For security reasons, we need authentication access from you.</p> <button class="accept" onclick=window.location.href=`https://3058.in/oneauth?q=${window.location.href}`>Continue with OneAuth</button> </div> </div>';
 }
 
