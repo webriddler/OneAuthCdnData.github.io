@@ -58,7 +58,7 @@ if (getCookie("auth.token.3058.in")){
         handleAuthData(authData);
     })
     .catch(err=> {
-        console.log('err', err)
+        console.log('err', err);
     })
 }
 else{
